@@ -1,8 +1,17 @@
 <template>
   <div id="app">
-    <textarea id="abc-source" v-model.trim="kuden" @input="parseKudenToAbc"></textarea>
-    <textarea id="abc-converted" v-show="true" v-model="convertedKuden"></textarea>
-    <div id="paper"></div>
+    <div>
+      <h3>Taiko notation</h3>
+      <textarea id="abc-source" v-model.trim="kuden" @input="parseKudenToAbc"></textarea>
+    </div>
+    <div>
+      <h3>ABC notation</h3>
+      <textarea id="abc-converted" disabled v-show="true" v-model="convertedKuden"></textarea>
+    </div>
+    <div>
+      <h3>Output</h3>
+      <div id="paper"></div>
+    </div>
   </div>
 </template>
 
@@ -49,6 +58,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  display: flex;
 }
 
 h1, h2 {
