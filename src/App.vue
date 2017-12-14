@@ -1,17 +1,18 @@
 <template>
   <div id="app">
     <div>
-      <h3>Taiko notation</h3>
+      <h3><a target="blank" href="http://taikosource.com/song-database/taiko-notation-a-work-in-progress/">Taiko notation</a></h3>
       <textarea id="abc-source" v-model.trim="kuden" @input="parseKudenToAbc"></textarea>
     </div>
     <div>
-      <h3>ABC notation</h3>
+      <h3><a target="blank" href="http://abcnotation.com/">ABC notation</a></h3>
       <textarea id="abc-converted" disabled v-show="true" v-model="convertedKuden"></textarea>
     </div>
     <div>
       <h3>Output</h3>
       <div id="paper"></div>
     </div>
+    <div><p>Using <a href="https://abcjs.net/">abcjs</a> lib</p></div>
   </div>
 </template>
 
