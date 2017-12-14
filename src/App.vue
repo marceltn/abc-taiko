@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <textarea id="abc-source" v-model="kuden" @input="parseKudenToAbc"></textarea>
-    <textarea id="abc-converted" v-model="convertedKuden" hidden></textarea>
+    <textarea id="abc-source" v-model.trim="kuden" @input="parseKudenToAbc"></textarea>
+    <textarea id="abc-converted" v-show="true" v-model="convertedKuden"></textarea>
     <div id="paper"></div>
   </div>
 </template>
@@ -14,26 +14,28 @@ var mabc = {}
 export default {
   name: 'app',
   mounted: function () {
-    this.mabc = new abcjs.Editor("abc-converted", {canvas_id: "paper"});
+    this.mabc = new abcjs.Editor("abc-converted", {canvas_id: "paper"})
+    this.$watch(
+        'convertedKuden',
+        function (val, oldVal) {
+          this.mabc.fireChanged()
+        },
+        {immediate: true}
+      )
 	},
   data: function() {
     return {
-      kuden: 'a',
-      convertedKuden: 'X:1\nM: 4/4\nL: 1/8\nK: stafflines=1\ncA2Ac2A2',
+      kuden: 'Don',
+      convertedKuden: 'X:1\nM: 4/4\nL: 1/8\nK: stafflines=1\nc',
       header: 'X:1\nM: 4/4\nL: 1/8\nK: stafflines=1\n'
     }
   },
   methods: {
     parseKudenToAbc() {
       this.convertedKuden = this.header
-      if(this.kuden === 'Don') {
+      if(this.kuden.toLowerCase() === 'don') {
         this.convertedKuden += 'c'
       }
-    }
-  },
-  watch: {
-    convertedKuden() {
-      this.mabc.fireChanged()
     }
   }
 }
@@ -65,5 +67,9 @@ li {
 
 a {
   color: #42b983;
+}
+
+textarea {
+  height: 150px;
 }
 </style>
