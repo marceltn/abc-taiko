@@ -20,6 +20,7 @@
 import abcjs from "abcjs"
 
 var mabc = {}
+let regexInitChar = /([dk])/
 
 export default {
   name: 'app',
@@ -35,16 +36,27 @@ export default {
 	},
   data: function() {
     return {
-      kuden: 'Don',
-      convertedKuden: 'X:1\nM: 4/4\nL: 1/8\nK: stafflines=1\nc',
+      kuden: 'Don Kon',
+      convertedKuden: 'X:1\nM: 4/4\nL: 1/8\nK: stafflines=1\ncA',
       header: 'X:1\nM: 4/4\nL: 1/8\nK: stafflines=1\n'
     }
   },
   methods: {
     parseKudenToAbc() {
       this.convertedKuden = this.header
-      if(this.kuden.toLowerCase() === 'don') {
-        this.convertedKuden += 'c'
+      let splitedKuden = this.kuden.toLowerCase().split(regexInitChar)
+      let note = ''
+      
+      for (const value of splitedKuden) {
+        switch (value) {
+          case 'd':
+            this.convertedKuden += 'c'
+            break;
+          case 'k':
+            this.convertedKuden += 'A'
+          default:
+            break;
+        }
       }
     }
   }
