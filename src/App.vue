@@ -22,7 +22,7 @@
 import abcjs from "abcjs"
 
 var mabc = {}
-let regexInitChar = /(don|kon|do|ko|d|k)/
+let regexInitChar = /(don|kon|do|ko|d|k|x[1-4]|x\/\/|x\/|x)/
 
 export default {
   name: 'app',
@@ -68,6 +68,25 @@ export default {
             break;
           case 'k':
             this.convertedKuden += 'A//'
+            break;
+          case 'x//':
+            this.convertedKuden += 'z//'
+            break;
+          case 'x/':
+            this.convertedKuden += 'z/'
+            break;
+          case 'x4':
+            this.convertedKuden += 'z4'
+            break;
+          case 'x3':
+            this.convertedKuden += 'z3'
+            break;
+          case 'x2':
+            this.convertedKuden += 'z2'
+            break;
+          case 'x1':
+          case 'x':
+            this.convertedKuden += 'z'
             break;
           default:
             break;
