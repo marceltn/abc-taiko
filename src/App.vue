@@ -41,7 +41,8 @@ export default {
       kuden: 'Don Kon',
       convertedKuden: 'X:1\nM: 4/4\nL: 1/4\nK: stafflines=1\ncA',
       header: 'X:1\nM: 4/4\nL: 1/4\nK: stafflines=1\n',
-      showAbcNotation: false
+      showAbcNotation: false,
+      measuresTotalPerLine: 4
     }
   },
   methods: {
@@ -49,14 +50,24 @@ export default {
       this.convertedKuden = this.header
       let splitedKuden = this.kuden.toLowerCase().split(regexInitChar)
       let noteLength = 0
+      let currentMeasures = 0
       
       for (const value of splitedKuden) {
         if (noteLength == 4) {
           this.convertedKuden += '|'
+          currentMeasures += 1
           noteLength = 0
         } else if (noteLength > 4) {
           noteLength = 0
         }
+
+        if (currentMeasures == this.measuresTotalPerLine) {
+          this.convertedKuden += '\n'
+          currentMeasures = 0
+        } else if (this.measuresTotalPerLine > 4) {
+          currentMeasures = 0
+        }
+
         switch (value) {
           case 'don':
             this.convertedKuden += 'c'
