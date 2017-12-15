@@ -3,10 +3,12 @@
     <div>
       <h3><a target="blank" href="http://taikosource.com/song-database/taiko-notation-a-work-in-progress/">Taiko notation</a></h3>
       <textarea id="abc-source" v-model.trim="kuden" @input="parseKudenToAbc"></textarea>
+      <input type="checkbox" id="checkbox-showAbcNotation" v-model="showAbcNotation">
+      <label for="checkbox-showAbcNotation">Show ABC notation</label>
     </div>
-    <div>
+    <div v-show="showAbcNotation">
       <h3><a target="blank" href="http://abcnotation.com/">ABC notation</a></h3>
-      <textarea id="abc-converted" disabled v-show="true" v-model="convertedKuden"></textarea>
+      <textarea id="abc-converted" v-model="convertedKuden"></textarea>
     </div>
     <div>
       <h3>Output</h3>
@@ -38,7 +40,8 @@ export default {
     return {
       kuden: 'Don Kon',
       convertedKuden: 'X:1\nM: 4/4\nL: 1/4\nK: stafflines=1\ncA',
-      header: 'X:1\nM: 4/4\nL: 1/4\nK: stafflines=1\n'
+      header: 'X:1\nM: 4/4\nL: 1/4\nK: stafflines=1\n',
+      showAbcNotation: false
     }
   },
   methods: {
