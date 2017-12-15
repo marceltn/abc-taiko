@@ -1,20 +1,26 @@
 <template>
   <div id="app">
-    <div>
-      <h3><a target="blank" href="http://taikosource.com/song-database/taiko-notation-a-work-in-progress/">Taiko notation</a></h3>
-      <textarea id="abc-source" v-model.trim="kuden" @input="parseKudenToAbc"></textarea>
-      <input type="checkbox" id="checkbox-showAbcNotation" v-model="showAbcNotation">
-      <label for="checkbox-showAbcNotation">Show ABC notation</label>
-    </div>
-    <div v-show="showAbcNotation">
-      <h3><a target="blank" href="http://abcnotation.com/">ABC notation</a></h3>
-      <textarea id="abc-converted" v-model="convertedKuden"></textarea>
-    </div>
-    <div>
-      <h3>Output</h3>
-      <div id="paper"></div>
-    </div>
-    <div><p>Using <a href="https://abcjs.net/">abcjs</a> lib</p></div>
+    <b-container>
+      <b-row>
+        <b-col>
+          <h3><a target="blank" href="http://taikosource.com/song-database/taiko-notation-a-work-in-progress/">Taiko notation</a></h3>
+          <textarea id="abc-source" v-model.trim="kuden" @input="parseKudenToAbc"></textarea>
+          <input type="checkbox" id="checkbox-showAbcNotation" v-model="showAbcNotation">
+          <label for="checkbox-showAbcNotation">Show ABC notation</label>
+        </b-col>
+        <b-col v-show="showAbcNotation">
+          <h3><a target="blank" href="http://abcnotation.com/">ABC notation</a></h3>
+          <textarea id="abc-converted" v-model="convertedKuden"></textarea>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
+          <h3>Output</h3>
+          <div id="paper"></div>
+        </b-col>
+      </b-row>
+      <div><p>Using <a href="https://abcjs.net/">abcjs</a> lib</p></div>
+    </b-container>
   </div>
 </template>
 
