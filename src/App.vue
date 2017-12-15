@@ -37,8 +37,8 @@ export default {
   data: function() {
     return {
       kuden: 'Don Kon',
-      convertedKuden: 'X:1\nM: 4/4\nL: 1/8\nK: stafflines=1\ncA',
-      header: 'X:1\nM: 4/4\nL: 1/8\nK: stafflines=1\n'
+      convertedKuden: 'X:1\nM: 4/4\nL: 1/4\nK: stafflines=1\ncA',
+      header: 'X:1\nM: 4/4\nL: 1/4\nK: stafflines=1\n'
     }
   },
   methods: {
@@ -49,22 +49,22 @@ export default {
       for (const value of splitedKuden) {
         switch (value) {
           case 'don':
-            this.convertedKuden += 'c2'
-            break;
-          case 'kon':
-            this.convertedKuden += 'A2'
-            break;
-          case 'do':
             this.convertedKuden += 'c'
             break;
-          case 'ko':
+          case 'kon':
             this.convertedKuden += 'A'
             break;
-          case 'd':
+          case 'do':
             this.convertedKuden += 'c/'
             break;
-          case 'k':
+          case 'ko':
             this.convertedKuden += 'A/'
+            break;
+          case 'd':
+            this.convertedKuden += 'c//'
+            break;
+          case 'k':
+            this.convertedKuden += 'A//'
             break;
           default:
             break;
