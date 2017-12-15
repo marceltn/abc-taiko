@@ -48,45 +48,64 @@ export default {
     parseKudenToAbc() {
       this.convertedKuden = this.header
       let splitedKuden = this.kuden.toLowerCase().split(regexInitChar)
+      let noteLength = 0
       
       for (const value of splitedKuden) {
+        if (noteLength == 4) {
+          this.convertedKuden += '|'
+          noteLength = 0
+        } else if (noteLength > 4) {
+          noteLength = 0
+        }
         switch (value) {
           case 'don':
             this.convertedKuden += 'c'
+            noteLength += 1
             break;
           case 'kon':
             this.convertedKuden += 'A'
+            noteLength += 1
             break;
           case 'do':
             this.convertedKuden += 'c/'
+            noteLength += 0.5
             break;
           case 'ko':
             this.convertedKuden += 'A/'
+            noteLength += 0.5
             break;
           case 'd':
             this.convertedKuden += 'c//'
+            noteLength += 0.25
             break;
           case 'k':
             this.convertedKuden += 'A//'
+            noteLength += 0.25
             break;
           case 'x//':
             this.convertedKuden += 'z//'
+            noteLength += 0.25
             break;
           case 'x/':
             this.convertedKuden += 'z/'
+            noteLength += 0.5
             break;
           case 'x4':
             this.convertedKuden += 'z4'
+            noteLength += 4
             break;
           case 'x3':
             this.convertedKuden += 'z3'
+            noteLength += 3
             break;
           case 'x2':
             this.convertedKuden += 'z2'
+            noteLength += 2
             break;
           case 'x1':
           case 'x':
             this.convertedKuden += 'z'
+            noteLength += 1
             break;
           default:
             break;
