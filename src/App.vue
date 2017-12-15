@@ -20,7 +20,7 @@
 import abcjs from "abcjs"
 
 var mabc = {}
-let regexInitChar = /([dk])/
+let regexInitChar = /(don|kon|do|ko|d|k)/
 
 export default {
   name: 'app',
@@ -45,15 +45,27 @@ export default {
     parseKudenToAbc() {
       this.convertedKuden = this.header
       let splitedKuden = this.kuden.toLowerCase().split(regexInitChar)
-      let note = ''
       
       for (const value of splitedKuden) {
         switch (value) {
-          case 'd':
+          case 'don':
+            this.convertedKuden += 'c2'
+            break;
+          case 'kon':
+            this.convertedKuden += 'A2'
+            break;
+          case 'do':
             this.convertedKuden += 'c'
             break;
-          case 'k':
+          case 'ko':
             this.convertedKuden += 'A'
+            break;
+          case 'd':
+            this.convertedKuden += 'c/'
+            break;
+          case 'k':
+            this.convertedKuden += 'A/'
+            break;
           default:
             break;
         }
