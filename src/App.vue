@@ -28,7 +28,7 @@
 import abcjs from "abcjs"
 
 var mabc = {}
-let regexInitChar = /(don|kon|do|ko|d|k|x[1-4]|x\/\/|x\/|x)/
+let regexInitChar = /(don|kon|do|ko|d|k|su|s|x[1-4]|x\/\/|x\/|x|m)/
 
 export default {
   name: 'app',
@@ -44,8 +44,8 @@ export default {
 	},
   data: function() {
     return {
-      kuden: 'Don x Kon x\ndon kon don kon\ndoko doko doko doko\ndkdkdkdkdkdkdkdk',
-      convertedKuden: 'X:1\nM: 4/4\nL: 1/4\nK: stafflines=1\nczAz|cAcA|c/A/c/A/c/A/c/A/|c//A//c//A//c//A//c//A//c//A//c//A//c//A//c//A//|',
+      kuden: 'don m kon su ko\ns k don kon do kon\nDon x Kon x\ndon kon don kon\ndoko doko doko doko\ndkdkdkdkdkdkdkdk',
+      convertedKuden: 'X:1\nM: 4/4\nL: 1/4\nK: stafflines=1\nczAz/A/|z//A//cAc/A|czAz|cAcA|c/A/c/A/c/A/c/A/|c//A//c//A//c//A//c//A//c//A//c//A//c//A//c//A//|',
       header: 'X:1\nM: 4/4\nL: 1/4\nK: stafflines=1\n',
       showAbcNotation: false,
       measuresTotalPerLine: 4
@@ -54,7 +54,7 @@ export default {
   methods: {
     parseKudenToAbc() {
       this.convertedKuden = this.header
-      let splitedKuden = this.kuden.toLowerCase().split(regexInitChar)
+      let splitedKuden = this.kuden.replace(/ /g,'').toLowerCase().split(regexInitChar)
       let noteLength = 0
       let currentMeasures = 0
       
@@ -74,7 +74,7 @@ export default {
           currentMeasures = 0
         }
 
-        switch (value) {
+        switch (value.trim()) {
           case 'don':
             this.convertedKuden += 'c'
             noteLength += 1
@@ -100,10 +100,12 @@ export default {
             noteLength += 0.25
             break;
           case 'x//':
+          case 's':
             this.convertedKuden += 'z//'
             noteLength += 0.25
             break;
           case 'x/':
+          case 'su':
             this.convertedKuden += 'z/'
             noteLength += 0.5
             break;
@@ -121,8 +123,12 @@ export default {
             break;
           case 'x1':
           case 'x':
+          case 'm':
             this.convertedKuden += 'z'
             noteLength += 1
+            break;
+          case '.':
+            this.convertedKuden += '>'
             break;
           default:
             break;
