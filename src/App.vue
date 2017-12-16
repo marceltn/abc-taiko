@@ -44,8 +44,8 @@ export default {
 	},
   data: function() {
     return {
-      kuden: 'Don Kon',
-      convertedKuden: 'X:1\nM: 4/4\nL: 1/4\nK: stafflines=1\ncA',
+      kuden: 'Don x Kon x\ndon kon don kon\ndoko doko doko doko\ndkdkdkdkdkdkdkdk',
+      convertedKuden: 'X:1\nM: 4/4\nL: 1/4\nK: stafflines=1\nczAz|cAcA|c/A/c/A/c/A/c/A/|c//A//c//A//c//A//c//A//c//A//c//A//c//A//c//A//|',
       header: 'X:1\nM: 4/4\nL: 1/4\nK: stafflines=1\n',
       showAbcNotation: false,
       measuresTotalPerLine: 4
