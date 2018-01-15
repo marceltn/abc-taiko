@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <main-menu></main-menu>
+    <main-menu
+      :showAbcNotation="showAbcNotation"
+      @changeAbcNotationFlag="showAbcNotation = $event"></main-menu>
     <b-container>
       <b-row>
         <b-col>
           <h3><a target="blank" href="http://taikosource.com/song-database/taiko-notation-a-work-in-progress/">Taiko notation</a></h3>
           <textarea id="abc-source" v-model.trim="kuden" @input="parseKudenToAbc"></textarea>
-          <input type="checkbox" id="checkbox-showAbcNotation" v-model="showAbcNotation">
-          <label for="checkbox-showAbcNotation">Show ABC notation</label>
         </b-col>
         <b-col v-show="showAbcNotation">
           <h3><a target="blank" href="http://abcnotation.com/">ABC notation</a></h3>

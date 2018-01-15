@@ -11,7 +11,8 @@
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
 
-          <help></help>
+          <b-navbar-item><help></help></b-navbar-item>
+          <b-navbar-item><b-btn type="button" @click="toggleAbcNotation">Show/Hide ABC Notation</b-btn></b-navbar-item>
 
         </b-navbar-nav>
 
@@ -26,6 +27,14 @@
   export default {
     components: {
       Help
+    },
+    props: {
+        showAbcNotation: Boolean
+    },
+    methods: {
+        toggleAbcNotation() {
+            this.$emit('changeAbcNotationFlag', !this.showAbcNotation)
+        }
     }
   }
 
