@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <main-menu></main-menu>
     <b-container>
       <b-row>
         <b-col>
@@ -19,19 +20,25 @@
           <div id="paper"></div>
         </b-col>
       </b-row>
-      <div><p>Using <a href="https://abcjs.net/">abcjs</a> lib</p></div>
     </b-container>
+    <main-footer></main-footer>
   </div>
 </template>
 
 <script>
 import abcjs from "abcjs"
+import MainMenu from "./components/Header.vue"
+import MainFooter from "./components/Footer.vue"
 
 var mabc = {}
 let regexInitChar = /(don|kon|do|ko|d|k|su|s|x[1-4]|x\/\/|x\/|x|m)/
 
 export default {
   name: 'app',
+  components: {
+    MainMenu,
+    MainFooter
+  },
   mounted: function () {
     this.mabc = new abcjs.Editor("abc-converted", {canvas_id: "paper"})
     this.$watch(
@@ -145,7 +152,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin-top: 60px;
 }
 
 h1, h2 {
