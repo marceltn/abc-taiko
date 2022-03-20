@@ -1,12 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 interface AbcRenderProps {
   abc: string
 }
 
 export default function AbcRender(props: AbcRenderProps) {
-  const abcInputRef = useRef(null)
-  const [value, setValue] = useState(props.abc)
   const [abcEditor, setAbcEditor] = useState(null)
   useEffect(() => {
     const abcjsInit = async () => {

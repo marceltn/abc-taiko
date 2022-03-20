@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { NextPage } from 'next';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
-import Copyright from '@/src/Copyright';
+import Copyright from '@/components/Copyright';
 import { Grid } from '@mui/material';
 import KudenInput from '@/components/inputs/KudenInput';
 import AbcRender from '@/components/AbcRender';
@@ -31,7 +31,6 @@ const Home: NextPage = () => {
             />
           </Grid>
           <Grid item xs={4}>
-          hjkl;c
           </Grid>
           <Grid item xs={12}>
             <AbcRender
