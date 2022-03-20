@@ -31,6 +31,7 @@ export default function AbcRender(props: AbcRenderProps) {
       <textarea
         style={{visibility:"hidden"}}
         id="abc"
+        readOnly
         value={props.abc}
       />
       <div id="warnings"></div>
