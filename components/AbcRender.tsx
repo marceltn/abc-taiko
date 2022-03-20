@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import { Editor as AbcEditor } from 'abcjs'
 
 interface AbcRenderProps {
   abc: string
 }
 
 export default function AbcRender(props: AbcRenderProps) {
-  const [abcEditor, setAbcEditor] = useState(null)
+  const [abcEditor, setAbcEditor] = useState<null | AbcEditor>(null)
   useEffect(() => {
     const abcjsInit = async () => {
       const abcjs = await import("abcjs");
@@ -21,7 +22,7 @@ export default function AbcRender(props: AbcRenderProps) {
   useEffect(() => {
     if (abcEditor) {
       // FIXME: just to rerender the editor with the new 
-      abcEditor.paramChanged()
+      abcEditor.paramChanged({})
     }
   }, [props.abc, abcEditor])
 
