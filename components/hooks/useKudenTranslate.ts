@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const regexInitChar = /(don|kon|do|ko|d|k|su|s|x[1-4]|x\/\/|x\/|x|m)/
+const regexInitChar = /(don|kon|can|ran|do|ko|ca|ra|d|k|c|r|su|s|x[1-4]|x\/\/|x\/|x|m)/
 const header = 'X:1\nM: 4/4\nL: 1/4\nK: stafflines=1\n'
 const measuresTotalPerLine = 4
 
@@ -39,6 +39,14 @@ export default function useKudenTranslate (kuden: string) {
             convertedKuden += 'A'
             noteLength += 1
             break;
+          case 'can':
+            convertedKuden += '!style=x!c'
+            noteLength += 1
+            break;
+          case 'ran':
+            convertedKuden += '!style=x!A'
+            noteLength += 1
+            break;
           case 'do':
             convertedKuden += 'c/'
             noteLength += 0.5
@@ -47,12 +55,28 @@ export default function useKudenTranslate (kuden: string) {
             convertedKuden += 'A/'
             noteLength += 0.5
             break;
+          case 'ca':
+            convertedKuden += '!style=x!c/'
+            noteLength += 0.5
+            break;
+          case 'ra':
+            convertedKuden += '!style=x!A/'
+            noteLength += 0.5
+            break;
           case 'd':
             convertedKuden += 'c//'
             noteLength += 0.25
             break;
           case 'k':
             convertedKuden += 'A//'
+            noteLength += 0.25
+            break;
+          case 'c':
+            convertedKuden += '!style=x!c//'
+            noteLength += 0.25
+            break;
+          case 'r':
+            convertedKuden += '!style=x!A//'
             noteLength += 0.25
             break;
           case 'x//':
