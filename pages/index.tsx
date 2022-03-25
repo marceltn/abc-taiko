@@ -7,10 +7,11 @@ import { Grid } from '@mui/material';
 import KudenInput from '@/components/inputs/KudenInput';
 import AbcRender from '@/components/AbcRender';
 import useKudenTranslate from '@/components/hooks/useKudenTranslate';
+import useKudenStorage from '@/components/hooks/useKudenStorage';
 import { Help } from '@/components/Help';
 
 const Home: NextPage = () => {
-  const [kuden, setKuden] = React.useState('')
+  const [kuden, setKuden] = useKudenStorage()
   const [original, abc] = useKudenTranslate(kuden)
 
   return (
