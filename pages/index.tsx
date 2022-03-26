@@ -7,12 +7,12 @@ import { Grid } from '@mui/material';
 import KudenInput from '@/components/inputs/KudenInput';
 import AbcRender from '@/components/AbcRender';
 import useKudenTranslate from '@/components/hooks/useKudenTranslate';
-import useKudenStorage from '@/components/hooks/useKudenStorage';
+import useStorage from '@/components/hooks/useStorage';
 import { Help } from '@/components/Help';
 import TaikoNotationLink from '@/components/TaikoNotationLink';
 
 const Home: NextPage = () => {
-  const [kuden, setKuden] = useKudenStorage()
+  const [kuden, setKuden] = useStorage('kuden')
   const [original, abc] = useKudenTranslate(kuden)
 
   return (
