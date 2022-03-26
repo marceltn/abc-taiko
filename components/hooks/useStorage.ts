@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
 
-const useKudenStorage = (): [string, Dispatch<SetStateAction<string>>] => {
+const useStorage = (attribute: string): [string, Dispatch<SetStateAction<string>>] => {
   const [storageValue, setStorageValue] = useState<string>('')
-  const key = '@abc-taiko/kuden'
+  const key = `@abc-taiko/${attribute}`
 
   useEffect(() => {
     setStorageValue(window.localStorage.getItem(key) || '')
@@ -16,4 +16,4 @@ const useKudenStorage = (): [string, Dispatch<SetStateAction<string>>] => {
   return [storageValue, setStorageValue]
 }
 
-export default useKudenStorage
+export default useStorage

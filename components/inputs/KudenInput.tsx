@@ -10,9 +10,6 @@ const KudenInput = (props: KudenInputProps) => {
   const { kuden, setKuden } = props
   return (
     <>
-      <Typography>
-        <h3><a target="blank" href="http://taikosource.com/song-database/taiko-notation-a-work-in-progress/">Taiko notation</a></h3>
-      </Typography>
       <TextField
         id="kuden-input"
         label="Kuden"
