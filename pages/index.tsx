@@ -9,6 +9,7 @@ import AbcRender from '@/components/AbcRender';
 import useKudenTranslate from '@/components/hooks/useKudenTranslate';
 import useKudenStorage from '@/components/hooks/useKudenStorage';
 import { Help } from '@/components/Help';
+import TaikoNotationLink from '@/components/TaikoNotationLink';
 
 const Home: NextPage = () => {
   const [kuden, setKuden] = useKudenStorage()
@@ -39,6 +40,7 @@ const Home: NextPage = () => {
             <Help />
           </Grid>
         </Grid>
+        <TaikoNotationLink />
         <Copyright />
       </Box>
     </Container>
