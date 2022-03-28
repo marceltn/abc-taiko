@@ -11,6 +11,7 @@ import useStorage from '@/components/hooks/useStorage';
 import { Help } from '@/components/Help';
 import TaikoNotationLink from '@/components/TaikoNotationLink';
 import MusicTitleInput from '@/components/inputs/MusicTitleInput';
+import SaveButton from '@/components/SaveButton';
 
 const Home: NextPage = () => {
   const [kuden, setKuden] = useStorage('kuden')
@@ -29,7 +30,13 @@ const Home: NextPage = () => {
       >
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <MusicTitleInput />
+            <Box sx={{
+              display: 'flex',
+              justifyContent: 'space-between'
+            }}>
+              <MusicTitleInput />
+              <Box sx={{ alignSelf: 'flex-end' }}><SaveButton /></Box>
+            </Box>
           </Grid>
           <Grid item xs={12} md={10}>
             <KudenInput
